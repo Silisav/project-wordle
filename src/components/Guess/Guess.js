@@ -3,15 +3,20 @@ import { range } from '../../utils';
 
 function Guess({ guess }) {
   return (
-    <>
-      <p className="guess">
-        {range(5).map((i) => (
-          <span key={Math.random()} className="cell">
-            {guess ? [...guess][i] : ''}
-          </span>
-        ))}
-      </p>
-    </>
+    <p className="guess">
+      {range(5).map((i) => (
+        <span
+          key={Math.random()}
+          className={
+            guess && guess[i].status !== null
+              ? `cell ${guess[i].status}`
+              : 'cell'
+          }
+        >
+          {guess && guess[i].letter}
+        </span>
+      ))}
+    </p>
   );
 }
 
