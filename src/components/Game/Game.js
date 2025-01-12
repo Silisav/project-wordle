@@ -1,4 +1,5 @@
 import React from 'react';
+import PreviousGuesses from '../PreviousGuesses';
 import FormInput from '../FormInput';
 
 import { sample } from '../../utils';
@@ -10,9 +11,16 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [guesses, setGuesses] = React.useState([]);
+
+  function handleGuess(guess) {
+    setGuesses([...guesses, guess]);
+  }
+
   return (
     <>
-      <FormInput />
+      <PreviousGuesses guesses={guesses} />
+      <FormInput handleGuess={handleGuess} />
     </>
   );
 }

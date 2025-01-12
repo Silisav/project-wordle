@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FormInput() {
+function FormInput({ handleGuess }) {
   const [guess, setGuess] = React.useState('');
 
   function handleSubmit(event) {
@@ -9,7 +9,7 @@ function FormInput() {
       alert('Guess must be 5 letters long.');
       return;
     }
-    console.log({ guess });
+    handleGuess(guess);
     setGuess('');
   }
 
